@@ -15,20 +15,23 @@ the enter key, or presses the button, then display an alert stating that both fi
 
 
 var tree = [];
-var line = "";
 var counter = 0;
+var submit = document.getElementById("submit");
+var input = document.getElementById("treeSize");
+var input1 = document.getElementById("charUsed");
 
 // Create a function to create the tree
-// write to an array and then output the array
 function createTree(size, character) {
-    // attempt number 2
+
     size = parseInt(size);
-    var iniSize = ((parseInt(size) + 1) - parseInt(size));
+    var iniSize = 1;
     for(var h = size; h > 0; h--) {
         tree[counter] = "";
+        // adds blank spaces
         for(var i = h; i > 0; i--) {
-            tree[counter]+= "_";
+            tree[counter]+= " "; // I used _ to test for the correct # of spaces
         }
+        // add the character entered to the pyramid 1, 3, 5, 7, etc etc "size" times
         for(var j = 0; j < iniSize; j++) {
             tree[counter] += character;
         }
@@ -38,12 +41,37 @@ function createTree(size, character) {
     }
 }
 
-// Event listener for the 2 inputs
-// add event listener for user hitting enter
-document.getElementById("submit").addEventListener("click", function() {
-    // add logic to display an alert if either field is empty
+function validateInput() {
     var size = document.getElementById("treeSize").value;
     var character = document.getElementById("charUsed").value;
-// Call a function to create the tree
-    createTree(size, character);
+    // Checks for an empty field and displays an alert
+    if(size === "" || character === "") {
+        alert("Please enter a value for both input fields");
+    } else {
+        // Call a function to create the tree
+        createTree(size, character);
+    }
+}
+
+// event listener for click
+submit.addEventListener("click", validateInput);
+
+// (Enter)event listener for the first input field
+input.addEventListener("keydown", function(e) {
+    if(e.keyCode === 13) {
+        validateInput();
+    }
 });
+// (Enter)event listener for 2nd input field
+input1.addEventListener("keydown", function(e) {
+    if(e.keyCode === 13) {
+        validateInput();
+    }
+});
+
+
+
+
+
+
+
