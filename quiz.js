@@ -21,9 +21,9 @@ var input = document.getElementById("treeSize");
 var input1 = document.getElementById("charUsed");
 
 // Create a function to create the tree
-function createTree(size, character) {
+function createTree(calculate) { //size, character
 
-    size = parseInt(size);
+    size = parseInt(calculate.size);
     var iniSize = 1;
     for(var h = size; h > 0; h--) {
         tree[counter] = "";
@@ -33,7 +33,7 @@ function createTree(size, character) {
         }
         // add the character entered to the pyramid 1, 3, 5, 7, etc etc "size" times
         for(var j = 0; j < iniSize; j++) {
-            tree[counter] += character;
+            tree[counter] += calculate.character;
         }
         console.log(tree[counter]);
         counter++;
@@ -44,12 +44,13 @@ function createTree(size, character) {
 function validateInput() {
     var size = document.getElementById("treeSize").value;
     var character = document.getElementById("charUsed").value;
+    var calculate = {size: size, character: character};
     // Checks for an empty field and displays an alert
     if(size === "" || character === "") {
         alert("Please enter a value for both input fields");
     } else {
         // Call a function to create the tree
-        createTree(size, character);
+        createTree(calculate);
     }
 }
 
