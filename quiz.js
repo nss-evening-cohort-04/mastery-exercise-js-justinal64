@@ -21,7 +21,7 @@ var input = document.getElementById("treeSize");
 var input1 = document.getElementById("charUsed");
 
 // Create a function to create the tree
-function createTree(calculate) { //size, character
+function createTree(calculate) {
 
     size = parseInt(calculate.size);
     var iniSize = 1;
